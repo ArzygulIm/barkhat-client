@@ -1,0 +1,38 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+  position: relative;
+  overflow: hidden;
+}
+body:after{
+  content: "Barkhat";
+  width: 100vw;
+  font-family: 'Italianno', cursive;
+  font-size: 50vh;
+  color: #818181;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  text-align: center;
+  z-index: -1;
+  transform: translate(-50%, -50%) rotate(-15deg);
+  opacity: 0.5;
+}
+
+.container{
+  width: 90%;
+  margin: 0 auto;
+}
+
+.table__hours-cell{
+  width: 120px;
+}
+
+.slick-slider {
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+}
