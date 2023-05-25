@@ -89,7 +89,12 @@ const ClientPage = ({el}) => {
     useEffect(() => {
         getDaySum(getTodayDate())
     }, [line]);
-
+    useEffect(() => {
+        const interval = setInterval(() => {
+            getLine(el)
+        }, 1000);
+        return () => clearInterval(interval);
+    }, []);
     return (
         <div className={"client__page"}>
             <h6>{line.model}</h6>

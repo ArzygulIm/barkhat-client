@@ -25,12 +25,6 @@ const App = () => {
     useEffect(() => {
         getLines()
     }, []);
-    useEffect(() => {
-        const interval = setInterval(() => {
-            getLines()
-        }, 1000);
-        return () => clearInterval(interval);
-    }, []);
     const settings = {
         dots: false,
         infinite: true,
