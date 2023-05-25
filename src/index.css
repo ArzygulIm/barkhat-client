@@ -6,7 +6,6 @@
 body{
   position: relative;
   overflow: hidden;
-  padding-bottom: 10vh;
 }
 body:after{
   content: "Barkhat";
@@ -33,7 +32,10 @@ body:after{
 }
 
 .slick-slider {
-  overflow: hidden;
   width: 100vw;
-  height: 100vh;
+  height: 80vh;
+}
+
+.table>:not(caption)>*>* {
+  padding: 5px!important;
 }
