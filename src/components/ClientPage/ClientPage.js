@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import Table from "react-bootstrap/Table";
 import {LINES_API} from "../../config";
 import "./style.css";
+import mp3audio from './zvonok.mp3';
 
 const ClientPage = ({el}) => {
     const [line, setLine] = useState({})
@@ -87,12 +88,16 @@ const ClientPage = ({el}) => {
     useEffect(() => {
         getDaySum(getTodayDate())
     }, [line]);
+
     useEffect(() => {
         const interval = setInterval(() => {
             getLine(el)
-            const d = new Date("July 21, 1983 01:15:00");
+            const d = new Date();
             let min = d.getMinutes();
             console.log(min)
+            if (min === 0) {
+
+            }
         }, 1000);
         return () => clearInterval(interval);
     }, []);
@@ -186,9 +191,9 @@ const ClientPage = ({el}) => {
                 </tr>
                 <tr>
                     <td className={"table__hours-cell"}>Итого за день</td>
-                    <td>{getDaySum(firstDate)}/{Math.ceil(line.quantity/line.days)}</td>
-                    <td>{getDaySum(secondDate)}/{Math.ceil(line.quantity/line.days)}</td>
-                    <td>{getDaySum(thirdDate)}/{Math.ceil(line.quantity/line.days)}</td>
+                    <td>{getDaySum(firstDate)}/{Math.ceil(line.quantity / line.days)}</td>
+                    <td>{getDaySum(secondDate)}/{Math.ceil(line.quantity / line.days)}</td>
+                    <td>{getDaySum(thirdDate)}/{Math.ceil(line.quantity / line.days)}</td>
                 </tr>
                 <tr>
                     <td>Итого за все время</td>
