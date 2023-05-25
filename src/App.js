@@ -21,9 +21,12 @@ const App = () => {
             })
             .catch(error => console.log('Authorization failed: ' + error.message));
     }
-
+    
     useEffect(() => {
-        getLines()
+        const interval = setInterval(() => {
+            getLines()
+        }, 1000);
+        return () => clearInterval(interval);
     }, []);
     const settings = {
         dots: false,
