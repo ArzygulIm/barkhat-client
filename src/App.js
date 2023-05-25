@@ -21,7 +21,7 @@ const App = () => {
             })
             .catch(error => console.log('Authorization failed: ' + error.message));
     }
-    
+
     useEffect(() => {
         const interval = setInterval(() => {
             getLines()
