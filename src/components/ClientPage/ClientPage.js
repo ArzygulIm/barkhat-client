@@ -20,6 +20,7 @@ const ClientPage = ({el}) => {
         })
             .then(response => response.json())
             .then(json => {
+                console.log('getline work')
                 setLine(json)
                 uniqArray(json.reportPerHour)
             })
@@ -85,7 +86,7 @@ const ClientPage = ({el}) => {
     }
     useEffect(() => {
         getLine(el)
-    }, []);
+    }, [el]);
     useEffect(() => {
         getDaySum(getTodayDate())
     }, [line]);
