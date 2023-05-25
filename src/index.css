@@ -28,7 +28,7 @@ body:after{
 }
 
 .table__hours-cell{
-  width: 120px;
+  width: 220px;
 }
 
 .slick-slider {
@@ -38,4 +38,10 @@ body:after{
 
 .table>:not(caption)>*>* {
   padding: 0px!important;
+}
+th,td{
+  text-align: center!important;
+}
+td{
+  font-size: 25px;
 }
