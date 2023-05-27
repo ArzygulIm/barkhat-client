@@ -14,7 +14,7 @@ body:after{
   font-size: 50vh;
   color: #818181;
   position: absolute;
-  top: 50%;
+  top: 60%;
   left: 50%;
   text-align: center;
   z-index: -1;
@@ -42,6 +42,25 @@ body:after{
 th,td{
   text-align: center!important;
 }
-td{
-  font-size: 20px;
+
+.table__numbers{
+  font-size: 60px!important;
+}
+
+.table__daily{
+  font-size: 30px!important;
+}
+
+.table-bordered>:not(caption)>*>* {
+  border-width: 5px!important;
+  border-color: black!important;
+}
+
+#table__rowSpan{
+  position: relative;
+}
+
+#table__rowSpan p{
+  position: absolute;
+  top: 30%;
 }

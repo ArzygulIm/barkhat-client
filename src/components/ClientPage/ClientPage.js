@@ -107,97 +107,77 @@ const ClientPage = ({el}) => {
             <Table bordered hover>
                 <thead>
                 <tr>
-                    <th className={"table__header"} rowSpan={2}>Часы</th>
-                    <th className={"table__header"} colSpan={3}>Дата</th>
+                    <th className={"table__header"} rowSpan={2}>Дата</th>
+                    <th className={"table__header"} colSpan={12}>Часы</th>
+                    <th className={"table__header"} rowSpan={2}>Итого за день</th>
+                    <th className={"table__header"} rowSpan={2}>Итого за все время</th>
                 </tr>
                 <tr>
-                    <th>{firstDate}</th>
-                    <th>{secondDate}</th>
-                    <th>{thirdDate}</th>
+                    <td className={"table__hours-cell"}>08:00-09:00</td>
+                    <td className={"table__hours-cell"}>09:00-10:00</td>
+                    <td className={"table__hours-cell"}>10:00-11:00</td>
+                    <td className={"table__hours-cell"}>11:00-12:00</td>
+                    <td className={"table__hours-cell"}>12:30-13:00</td>
+                    <td className={"table__hours-cell"}>13:00-14:00</td>
+                    <td className={"table__hours-cell"}>14:00-15:00</td>
+                    <td className={"table__hours-cell"}>15:00-16:00</td>
+                    <td className={"table__hours-cell"}>16:30-17:00</td>
+                    <td className={"table__hours-cell"}>17:00-18:00</td>
+                    <td className={"table__hours-cell"}>18:00-19:00</td>
+                    <td className={"table__hours-cell"}>19:00-20:00</td>
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
-                    <td className={"table__hours-cell"}>08:00-09:00</td>
-                    <td>{getHourReport(line, firstDate, "08:00-09:00") !== undefined && getHourReport(line, firstDate, "08:00-09:00").length > 0 ? getHourReport(line, firstDate, "08:00-09:00")[0].quantity : null}</td>
-                    <td>{getHourReport(line, secondDate, "08:00-09:00") !== undefined && getHourReport(line, secondDate, "08:00-09:00").length > 0 ? getHourReport(line, secondDate, "08:00-09:00")[0].quantity : null}</td>
-                    <td>{getHourReport(line, thirdDate, "08:00-09:00") !== undefined && getHourReport(line, thirdDate, "08:00-09:00").length > 0 ? getHourReport(line, thirdDate, "08:00-09:00")[0].quantity : null}</td>
+                    <th style={{writingMode: "vertical-lr"}}>{firstDate}</th>
+                    <td className={"table__numbers"}>{getHourReport(line, firstDate, "08:00-09:00") !== undefined && getHourReport(line, firstDate, "08:00-09:00").length > 0 ? getHourReport(line, firstDate, "08:00-09:00")[0].quantity : null}</td>
+                    <td className={"table__numbers"}>{getHourReport(line, firstDate, "09:00-10:00") !== undefined && getHourReport(line, firstDate, "09:00-10:00").length > 0 ? getHourReport(line, firstDate, "09:00-10:00")[0].quantity : null}</td>
+                    <td className={"table__numbers"}>{getHourReport(line, firstDate, "10:00-11:00") !== undefined && getHourReport(line, firstDate, "10:00-11:00").length > 0 ? getHourReport(line, firstDate, "10:00-11:00")[0].quantity : null}</td>
+                    <td className={"table__numbers"}>{getHourReport(line, firstDate, "11:00-12:00") !== undefined && getHourReport(line, firstDate, "11:00-12:00").length > 0 ? getHourReport(line, firstDate, "11:00-12:00")[0].quantity : null}</td>
+                    <td className={"table__numbers"}>{getHourReport(line, firstDate, "12:30-13:00") !== undefined && getHourReport(line, firstDate, "12:00-13:00").length > 0 ? getHourReport(line, firstDate, "12:00-13:00")[0].quantity : null}</td>
+                    <td className={"table__numbers"}>{getHourReport(line, firstDate, "13:00-14:00") !== undefined && getHourReport(line, firstDate, "13:00-14:00").length > 0 ? getHourReport(line, firstDate, "13:00-14:00")[0].quantity : null}</td>
+                    <td className={"table__numbers"}>{getHourReport(line, firstDate, "14:00-15:00") !== undefined && getHourReport(line, firstDate, "14:00-15:00").length > 0 ? getHourReport(line, firstDate, "14:00-15:00")[0].quantity : null}</td>
+                    <td className={"table__numbers"}>{getHourReport(line, firstDate, "15:00-16:00") !== undefined && getHourReport(line, firstDate, "15:00-16:00").length > 0 ? getHourReport(line, firstDate, "15:00-16:00")[0].quantity : null}</td>
+                    <td className={"table__numbers"}>{getHourReport(line, firstDate, "16:30-17:00") !== undefined && getHourReport(line, firstDate, "16:00-17:00").length > 0 ? getHourReport(line, firstDate, "16:00-17:00")[0].quantity : null}</td>
+                    <td className={"table__numbers"}>{getHourReport(line, firstDate, "17:00-18:00") !== undefined && getHourReport(line, firstDate, "17:00-18:00").length > 0 ? getHourReport(line, firstDate, "17:00-18:00")[0].quantity : null}</td>
+                    <td className={"table__numbers"}>{getHourReport(line, firstDate, "18:00-19:00") !== undefined && getHourReport(line, firstDate, "18:00-19:00").length > 0 ? getHourReport(line, firstDate, "18:00-19:00")[0].quantity : null}</td>
+                    <td className={"table__numbers"}>{getHourReport(line, firstDate, "19:00-20:00") !== undefined && getHourReport(line, firstDate, "19:00-20:00").length > 0 ? getHourReport(line, firstDate, "19:00-20:00")[0].quantity : null}</td>
+                    <td className={"table__daily"}>{getDaySum(firstDate)} <br/> из <br/> {Math.ceil(line.quantity / line.days)}</td>
+                    <td id={"table__rowSpan"} className={"table__daily"} style={{padding: "30%"}} rowSpan={3}><p>{line.sum} <br/> из <br/>{line.quantity}</p></td>
+
                 </tr>
                 <tr>
-                    <td className={"table__hours-cell"}>09:00-10:00</td>
-                    <td>{getHourReport(line, firstDate, "09:00-10:00") !== undefined && getHourReport(line, firstDate, "09:00-10:00").length > 0 ? getHourReport(line, firstDate, "09:00-10:00")[0].quantity : null}</td>
-                    <td>{getHourReport(line, secondDate, "09:00-10:00") !== undefined && getHourReport(line, secondDate, "09:00-10:00").length > 0 ? getHourReport(line, secondDate, "09:00-10:00")[0].quantity : null}</td>
-                    <td>{getHourReport(line, thirdDate, "09:00-10:00") !== undefined && getHourReport(line, thirdDate, "09:00-10:00").length > 0 ? getHourReport(line, thirdDate, "09:00-10:00")[0].quantity : null}</td>
+                    <th style={{writingMode: "vertical-lr"}}>{secondDate}</th>
+                    <td  className={"table__numbers"}>{getHourReport(line, secondDate, "08:00-09:00") !== undefined && getHourReport(line, secondDate, "08:00-09:00").length > 0 ? getHourReport(line, secondDate, "08:00-09:00")[0].quantity : null}</td>
+                    <td  className={"table__numbers"}>{getHourReport(line, secondDate, "09:00-10:00") !== undefined && getHourReport(line, secondDate, "09:00-10:00").length > 0 ? getHourReport(line, secondDate, "09:00-10:00")[0].quantity : null}</td>
+                    <td  className={"table__numbers"}>{getHourReport(line, secondDate, "10:00-11:00") !== undefined && getHourReport(line, secondDate, "10:00-11:00").length > 0 ? getHourReport(line, secondDate, "10:00-11:00")[0].quantity : null}</td>
+                    <td  className={"table__numbers"}>{getHourReport(line, secondDate, "11:00-12:00") !== undefined && getHourReport(line, secondDate, "11:00-12:00").length > 0 ? getHourReport(line, secondDate, "11:00-12:00")[0].quantity : null}</td>
+                    <td  className={"table__numbers"}>{getHourReport(line, secondDate, "12:30-13:00") !== undefined && getHourReport(line, secondDate, "12:00-13:00").length > 0 ? getHourReport(line, secondDate, "12:00-13:00")[0].quantity : null}</td>
+                    <td  className={"table__numbers"}>{getHourReport(line, secondDate, "13:00-14:00") !== undefined && getHourReport(line, secondDate, "13:00-14:00").length > 0 ? getHourReport(line, secondDate, "13:00-14:00")[0].quantity : null}</td>
+                    <td  className={"table__numbers"}>{getHourReport(line, secondDate, "14:00-15:00") !== undefined && getHourReport(line, secondDate, "14:00-15:00").length > 0 ? getHourReport(line, secondDate, "14:00-15:00")[0].quantity : null}</td>
+                    <td  className={"table__numbers"}>{getHourReport(line, secondDate, "15:00-16:00") !== undefined && getHourReport(line, secondDate, "15:00-16:00").length > 0 ? getHourReport(line, secondDate, "15:00-16:00")[0].quantity : null}</td>
+                    <td  className={"table__numbers"}>{getHourReport(line, secondDate, "16:30-17:00") !== undefined && getHourReport(line, secondDate, "16:00-17:00").length > 0 ? getHourReport(line, secondDate, "16:00-17:00")[0].quantity : null}</td>
+                    <td  className={"table__numbers"}>{getHourReport(line, secondDate, "17:00-18:00") !== undefined && getHourReport(line, secondDate, "17:00-18:00").length > 0 ? getHourReport(line, secondDate, "17:00-18:00")[0].quantity : null}</td>
+                    <td  className={"table__numbers"}>{getHourReport(line, secondDate, "18:00-19:00") !== undefined && getHourReport(line, secondDate, "18:00-19:00").length > 0 ? getHourReport(line, secondDate, "18:00-19:00")[0].quantity : null}</td>
+                    <td  className={"table__numbers"}>{getHourReport(line, secondDate, "19:00-20:00") !== undefined && getHourReport(line, secondDate, "19:00-20:00").length > 0 ? getHourReport(line, secondDate, "19:00-20:00")[0].quantity : null}</td>
+                    <td  className={"table__daily"}>{getDaySum(secondDate)} <br/> из <br/> {Math.ceil(line.quantity / line.days)}</td>
+
                 </tr>
                 <tr>
-                    <td className={"table__hours-cell"}>10:00-11:00</td>
-                    <td>{getHourReport(line, firstDate, "10:00-11:00") !== undefined && getHourReport(line, firstDate, "10:00-11:00").length > 0 ? getHourReport(line, firstDate, "10:00-11:00")[0].quantity : null}</td>
-                    <td>{getHourReport(line, secondDate, "10:00-11:00") !== undefined && getHourReport(line, secondDate, "10:00-11:00").length > 0 ? getHourReport(line, secondDate, "10:00-11:00")[0].quantity : null}</td>
-                    <td>{getHourReport(line, thirdDate, "10:00-11:00") !== undefined && getHourReport(line, thirdDate, "10:00-11:00").length > 0 ? getHourReport(line, thirdDate, "10:00-11:00")[0].quantity : null}</td>
-                </tr>
-                <tr>
-                    <td className={"table__hours-cell"}>11:00-12:00</td>
-                    <td>{getHourReport(line, firstDate, "11:00-12:00") !== undefined && getHourReport(line, firstDate, "11:00-12:00").length > 0 ? getHourReport(line, firstDate, "11:00-12:00")[0].quantity : null}</td>
-                    <td>{getHourReport(line, secondDate, "11:00-12:00") !== undefined && getHourReport(line, secondDate, "11:00-12:00").length > 0 ? getHourReport(line, secondDate, "11:00-12:00")[0].quantity : null}</td>
-                    <td>{getHourReport(line, thirdDate, "11:00-12:00") !== undefined && getHourReport(line, thirdDate, "11:00-12:00").length > 0 ? getHourReport(line, thirdDate, "11:00-12:00")[0].quantity : null}</td>
-                </tr>
-                <tr>
-                    <td className={"table__hours-cell"}>12:30-13:00</td>
-                    <td>{getHourReport(line, firstDate, "12:30-13:00") !== undefined && getHourReport(line, firstDate, "12:00-13:00").length > 0 ? getHourReport(line, firstDate, "12:00-13:00")[0].quantity : null}</td>
-                    <td>{getHourReport(line, secondDate, "12:30-13:00") !== undefined && getHourReport(line, secondDate, "12:00-13:00").length > 0 ? getHourReport(line, secondDate, "12:00-13:00")[0].quantity : null}</td>
-                    <td>{getHourReport(line, thirdDate, "12:30-13:00") !== undefined && getHourReport(line, thirdDate, "12:00-13:00").length > 0 ? getHourReport(line, thirdDate, "12:00-13:00")[0].quantity : null}</td>
-                </tr>
-                <tr>
-                    <td className={"table__hours-cell"}>13:00-14:00</td>
-                    <td>{getHourReport(line, firstDate, "13:00-14:00") !== undefined && getHourReport(line, firstDate, "13:00-14:00").length > 0 ? getHourReport(line, firstDate, "13:00-14:00")[0].quantity : null}</td>
-                    <td>{getHourReport(line, secondDate, "13:00-14:00") !== undefined && getHourReport(line, secondDate, "13:00-14:00").length > 0 ? getHourReport(line, secondDate, "13:00-14:00")[0].quantity : null}</td>
-                    <td>{getHourReport(line, thirdDate, "13:00-14:00") !== undefined && getHourReport(line, thirdDate, "13:00-14:00").length > 0 ? getHourReport(line, thirdDate, "13:00-14:00")[0].quantity : null}</td>
-                </tr>
-                <tr>
-                    <td className={"table__hours-cell"}>14:00-15:00</td>
-                    <td>{getHourReport(line, firstDate, "14:00-15:00") !== undefined && getHourReport(line, firstDate, "14:00-15:00").length > 0 ? getHourReport(line, firstDate, "14:00-15:00")[0].quantity : null}</td>
-                    <td>{getHourReport(line, secondDate, "14:00-15:00") !== undefined && getHourReport(line, secondDate, "14:00-15:00").length > 0 ? getHourReport(line, secondDate, "14:00-15:00")[0].quantity : null}</td>
-                    <td>{getHourReport(line, thirdDate, "14:00-15:00") !== undefined && getHourReport(line, thirdDate, "14:00-15:00").length > 0 ? getHourReport(line, thirdDate, "14:00-15:00")[0].quantity : null}</td>
-                </tr>
-                <tr>
-                    <td className={"table__hours-cell"}>15:00-16:00</td>
-                    <td>{getHourReport(line, firstDate, "15:00-16:00") !== undefined && getHourReport(line, firstDate, "15:00-16:00").length > 0 ? getHourReport(line, firstDate, "15:00-16:00")[0].quantity : null}</td>
-                    <td>{getHourReport(line, secondDate, "15:00-16:00") !== undefined && getHourReport(line, secondDate, "15:00-16:00").length > 0 ? getHourReport(line, secondDate, "15:00-16:00")[0].quantity : null}</td>
-                    <td>{getHourReport(line, thirdDate, "15:00-16:00") !== undefined && getHourReport(line, thirdDate, "15:00-16:00").length > 0 ? getHourReport(line, thirdDate, "15:00-16:00")[0].quantity : null}</td>
-                </tr>
-                <tr>
-                    <td className={"table__hours-cell"}>16:30-17:00</td>
-                    <td>{getHourReport(line, firstDate, "16:30-17:00") !== undefined && getHourReport(line, firstDate, "16:00-17:00").length > 0 ? getHourReport(line, firstDate, "16:00-17:00")[0].quantity : null}</td>
-                    <td>{getHourReport(line, secondDate, "16:30-17:00") !== undefined && getHourReport(line, secondDate, "16:00-17:00").length > 0 ? getHourReport(line, secondDate, "16:00-17:00")[0].quantity : null}</td>
-                    <td>{getHourReport(line, thirdDate, "16:30-17:00") !== undefined && getHourReport(line, thirdDate, "16:00-17:00").length > 0 ? getHourReport(line, thirdDate, "16:00-17:00")[0].quantity : null}</td>
-                </tr>
-                <tr>
-                    <td className={"table__hours-cell"}>17:00-18:00</td>
-                    <td>{getHourReport(line, firstDate, "17:00-18:00") !== undefined && getHourReport(line, firstDate, "17:00-18:00").length > 0 ? getHourReport(line, firstDate, "17:00-18:00")[0].quantity : null}</td>
-                    <td>{getHourReport(line, secondDate, "17:00-18:00") !== undefined && getHourReport(line, secondDate, "17:00-18:00").length > 0 ? getHourReport(line, secondDate, "17:00-18:00")[0].quantity : null}</td>
-                    <td>{getHourReport(line, thirdDate, "17:00-18:00") !== undefined && getHourReport(line, thirdDate, "17:00-18:00").length > 0 ? getHourReport(line, thirdDate, "17:00-18:00")[0].quantity : null}</td>
-                </tr>
-                <tr>
-                    <td className={"table__hours-cell"}>18:00-19:00</td>
-                    <td>{getHourReport(line, firstDate, "18:00-19:00") !== undefined && getHourReport(line, firstDate, "18:00-19:00").length > 0 ? getHourReport(line, firstDate, "18:00-19:00")[0].quantity : null}</td>
-                    <td>{getHourReport(line, secondDate, "18:00-19:00") !== undefined && getHourReport(line, secondDate, "18:00-19:00").length > 0 ? getHourReport(line, secondDate, "18:00-19:00")[0].quantity : null}</td>
-                    <td>{getHourReport(line, thirdDate, "18:00-19:00") !== undefined && getHourReport(line, thirdDate, "18:00-19:00").length > 0 ? getHourReport(line, thirdDate, "18:00-19:00")[0].quantity : null}</td>
-                </tr>
-                <tr>
-                    <td className={"table__hours-cell"}>19:00-20:00</td>
-                    <td>{getHourReport(line, firstDate, "19:00-20:00") !== undefined && getHourReport(line, firstDate, "19:00-20:00").length > 0 ? getHourReport(line, firstDate, "19:00-20:00")[0].quantity : null}</td>
-                    <td>{getHourReport(line, secondDate, "19:00-20:00") !== undefined && getHourReport(line, secondDate, "19:00-20:00").length > 0 ? getHourReport(line, secondDate, "19:00-20:00")[0].quantity : null}</td>
-                    <td>{getHourReport(line, thirdDate, "19:00-20:00") !== undefined && getHourReport(line, thirdDate, "19:00-20:00").length > 0 ? getHourReport(line, thirdDate, "19:00-20:00")[0].quantity : null}</td>
-                </tr>
-                <tr>
-                    <td className={"table__hours-cell"}>Итого за день</td>
-                    <td>{getDaySum(firstDate)}/{Math.ceil(line.quantity / line.days)}</td>
-                    <td>{getDaySum(secondDate)}/{Math.ceil(line.quantity / line.days)}</td>
-                    <td>{getDaySum(thirdDate)}/{Math.ceil(line.quantity / line.days)}</td>
-                </tr>
-                <tr>
-                    <td>Итого за все время</td>
-                    <td colSpan={3}>{line.sum}/{line.quantity}</td>
+                    <th style={{writingMode: "vertical-lr"}}>{thirdDate}</th>
+                    <td  className={"table__numbers"}>{getHourReport(line, thirdDate, "08:00-09:00") !== undefined && getHourReport(line, thirdDate, "08:00-09:00").length > 0 ? getHourReport(line, thirdDate, "08:00-09:00")[0].quantity : null}</td>
+                    <td  className={"table__numbers"}>{getHourReport(line, thirdDate, "09:00-10:00") !== undefined && getHourReport(line, thirdDate, "09:00-10:00").length > 0 ? getHourReport(line, thirdDate, "09:00-10:00")[0].quantity : null}</td>
+                    <td  className={"table__numbers"}>{getHourReport(line, thirdDate, "10:00-11:00") !== undefined && getHourReport(line, thirdDate, "10:00-11:00").length > 0 ? getHourReport(line, thirdDate, "10:00-11:00")[0].quantity : null}</td>
+                    <td  className={"table__numbers"}>{getHourReport(line, thirdDate, "11:00-12:00") !== undefined && getHourReport(line, thirdDate, "11:00-12:00").length > 0 ? getHourReport(line, thirdDate, "11:00-12:00")[0].quantity : null}</td>
+                    <td  className={"table__numbers"}>{getHourReport(line, thirdDate, "12:30-13:00") !== undefined && getHourReport(line, thirdDate, "12:00-13:00").length > 0 ? getHourReport(line, thirdDate, "12:00-13:00")[0].quantity : null}</td>
+                    <td  className={"table__numbers"}>{getHourReport(line, thirdDate, "13:00-14:00") !== undefined && getHourReport(line, thirdDate, "13:00-14:00").length > 0 ? getHourReport(line, thirdDate, "13:00-14:00")[0].quantity : null}</td>
+                    <td  className={"table__numbers"}>{getHourReport(line, thirdDate, "14:00-15:00") !== undefined && getHourReport(line, thirdDate, "14:00-15:00").length > 0 ? getHourReport(line, thirdDate, "14:00-15:00")[0].quantity : null}</td>
+                    <td  className={"table__numbers"}>{getHourReport(line, thirdDate, "15:00-16:00") !== undefined && getHourReport(line, thirdDate, "15:00-16:00").length > 0 ? getHourReport(line, thirdDate, "15:00-16:00")[0].quantity : null}</td>
+                    <td  className={"table__numbers"}>{getHourReport(line, thirdDate, "16:30-17:00") !== undefined && getHourReport(line, thirdDate, "16:00-17:00").length > 0 ? getHourReport(line, thirdDate, "16:00-17:00")[0].quantity : null}</td>
+                    <td  className={"table__numbers"}>{getHourReport(line, thirdDate, "17:00-18:00") !== undefined && getHourReport(line, thirdDate, "17:00-18:00").length > 0 ? getHourReport(line, thirdDate, "17:00-18:00")[0].quantity : null}</td>
+                    <td  className={"table__numbers"}>{getHourReport(line, thirdDate, "18:00-19:00") !== undefined && getHourReport(line, thirdDate, "18:00-19:00").length > 0 ? getHourReport(line, thirdDate, "18:00-19:00")[0].quantity : null}</td>
+                    <td  className={"table__numbers"}>{getHourReport(line, thirdDate, "19:00-20:00") !== undefined && getHourReport(line, thirdDate, "19:00-20:00").length > 0 ? getHourReport(line, thirdDate, "19:00-20:00")[0].quantity : null}</td>
+                    <td  className={"table__daily"}>{getDaySum(thirdDate)} <br/> из <br/> {Math.ceil(line.quantity/line.days)}</td>
                 </tr>
                 </tbody>
             </Table>
